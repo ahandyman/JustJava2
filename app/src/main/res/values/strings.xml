@@ -8,8 +8,9 @@
     <string name="totalCost">$2</string>
     <string name="order">order</string>
 
-    <string name="name">name</string>
+    <string name="name">Name</string>
     <string name="toppings">Toppings</string>
     <string name="whippedCream">Whipped Cream</string>
     <string name="chocolate">Chocolate</string>
+    <string name="coffeeBeans">java beans</string>
 </resources>
