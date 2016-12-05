@@ -1,9 +1,10 @@
 package com.example.vizcarradeveloper.justjava;
 
 /**
+ * lonuh
  * Add your package below. Package name can be found in the project's AndroidManifest.xml file.
  * This is the package name our example uses:
- *
+ * <p>
  * package com.example.android.justjava;
  */
 
@@ -22,6 +23,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+
+    /**
+     * This method is called when the decrease button is clicked
+     */
+    public void decrement(View view) {
+        int quantity = 0;
+        display(quantity);
+    }
+
+    /**
+     * This method is called when the decrease button is clicked
+     */
+    public void increment(View view) {
+        int quantity = 1;
+        display(quantity);
     }
 
     /**
