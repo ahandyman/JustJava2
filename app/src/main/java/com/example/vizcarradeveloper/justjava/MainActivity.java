@@ -43,11 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * Calculates the price of the order
+     *
+     * @return total price
+     */
+    private int calculatePrice() {
+        int price = quantity * pricePerCup;
+        return price;
+    }
+    /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        int price = calculatePrice();
         String priceMessage = "Thank you \n \n Your order: \n " + quantity + " cups\n \nTotal: \n $ ";
-        priceMessage = priceMessage + (quantity * pricePerCup) + "\n \n Thank you";
+        priceMessage = priceMessage + price + "\n \n Thank you";
 
         display(quantity);
 //        displayPrice(quantity * 2);
