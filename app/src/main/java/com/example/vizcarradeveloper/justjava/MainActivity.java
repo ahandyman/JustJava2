@@ -1,13 +1,5 @@
 package com.example.vizcarradeveloper.justjava;
 
-/**
- * lonuh
- * Add your package below. Package name can be found in the project's AndroidManifest.xml file.
- * This is the package name our example uses:
- * <p>
- * package com.example.android.justjava;
- */
-
 import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +10,9 @@ import android.widget.TextView;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
+
+    int quantity = 0;
+    int pricePerCup = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +25,35 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the decrease button is clicked
      */
     public void decrement(View view) {
-        int quantity = 0;
+        if (quantity == 0) {
+            return;
+        }
+        quantity -= 1;
         display(quantity);
+
     }
 
     /**
-     * This method is called when the decrease button is clicked
+     * This method is called when the increase button is clicked
      */
     public void increment(View view) {
-        int quantity = 1;
+        quantity += 1;
         display(quantity);
     }
+
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(1);
-        displayPrice(10);
+        String priceMessage = "Thank you \n \n Your order: \n " + quantity + " cups\n \nTotal: \n $ ";
+        priceMessage = priceMessage + (quantity * pricePerCup) + "\n \n Thank you";
+
+        display(quantity);
+//        displayPrice(quantity * 2);
+        displayMessage(priceMessage);
+
+
     }
 
 
@@ -66,4 +72,14 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
+
+
 }
