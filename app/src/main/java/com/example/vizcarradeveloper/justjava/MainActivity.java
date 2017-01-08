@@ -1,6 +1,5 @@
 package com.example.vizcarradeveloper.justjava;
 
-import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,7 +11,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
-    int pricePerCup = 5;
+    int pricePerCup = 1;
+    int price;
+    String customerName = "Ramon Vizcarra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         }
         quantity -= 1;
         display(quantity);
-
     }
 
     /**
@@ -48,22 +48,28 @@ public class MainActivity extends AppCompatActivity {
      * @return total price
      */
     private int calculatePrice() {
-        int price = quantity * pricePerCup;
-        return price;
+        return quantity * pricePerCup;
+
+
     }
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice();
-        String priceMessage = "Thank you \n \n Your order: \n " + quantity + " cups\n \nTotal: \n $ ";
-        priceMessage = priceMessage + price + "\n \n Thank you";
+//        instead of createOrderSummary(calculatePrice())
+//        varibale price was used
+        price = calculatePrice();
 
-        display(quantity);
-//        displayPrice(quantity * 2);
-        displayMessage(priceMessage);
+        //        IMPORTANT
+//          I don't know why this works but the method createOrder summary needs to be in a string
+//          and that string needs to be in the displayMessage() method
+//        OR
+//        displayMessage(createOrderSummary(price));
+//        OR
+//        displayMessage(createOrderSummary(calculatePrice()));
 
-
+        String orderMessage = createOrderSummary(price);
+        displayMessage(orderMessage);
     }
 
 
@@ -75,20 +81,27 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
         priceTextView.setText(message);
+    }
+
+    /**
+     * @param priceOfOrder
+     * @return text summary
+     */
+    private String createOrderSummary(int priceOfOrder) {
+
+        String orderName = "Name: " + customerName;
+        String orderQuantity = "\n \n Quantity " + quantity;
+        String orderTotal = "\n \n Total: $" + priceOfOrder;
+        String orderSummary = orderName + orderQuantity + orderTotal + "\n \n Thank you!";
+
+        return orderSummary;
     }
 
 

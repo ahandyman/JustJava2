@@ -4,7 +4,7 @@
     <string name="decrease">-</string>
     <string name="quantity_number">0</string>
     <string name="increase">+</string>
-    <string name="word_price">Price</string>
+    <string name="word_order_summary">Order Summary</string>
     <string name="totalCost">$0</string>
     <string name="order">order</string>
 
