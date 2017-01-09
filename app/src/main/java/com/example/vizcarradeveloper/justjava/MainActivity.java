@@ -18,7 +18,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+/**
+ * Practice calling object methods
+ *
+ TextView helloWorld = new TextView(this);
+ helloWorld.setText("I love the match");
+ helloWorld.setTextSize(18);
+ helloWorld.setTextColor(Color.RED);
+ setContentView(helloWorld);
+ *
+ */
+
         setContentView(R.layout.activity_main);
+
     }
 
 

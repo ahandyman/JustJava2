@@ -30,13 +30,15 @@
                 android:id="@+id/name_edit_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/name" />
+                android:text="@string/name"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/text_view_toppings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/toppings" />
+                android:text="@string/toppings"
+                android:textAllCaps="true" />
 
             <CheckBox
                 android:id="@+id/checkbox_toppings1"
@@ -90,11 +92,12 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/word_OrderSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/word_order_summary" />
+                android:text="@string/word_order_summary"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/order_summary_text_view"
