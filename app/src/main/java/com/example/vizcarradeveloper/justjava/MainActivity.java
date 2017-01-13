@@ -2,11 +2,17 @@ package com.example.vizcarradeveloper.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 /**
  * This app displays an order form to order coffee.
+ * Resulting in a Summary of the Order
+ * Name
+ * Quantity
+ * Total Price
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
 
     /**
      * This method is called when the decrease button is clicked
@@ -57,17 +69,22 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order
      *
-     * @return total price
+     * @return quantity * pricePerCup = total price
      */
     private int calculatePrice() {
         return quantity * pricePerCup;
-
-
     }
+
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCream = (CheckBox) findViewById(R.id.checkbox_toppings1);
+        boolean hasWhippedCream = whippedCream.isChecked();
+
+        CheckBox chocolate = (CheckBox) findViewById(R.id.checkbox_toppings2);
+        boolean hasChocolate = chocolate.isChecked();
+
 //        instead of createOrderSummary(calculatePrice())
 //        varibale price was used
         price = calculatePrice();
@@ -80,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 //        OR
 //        displayMessage(createOrderSummary(calculatePrice()));
 
-        String orderMessage = createOrderSummary(price);
+        String orderMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
         displayMessage(orderMessage);
     }
 
@@ -106,12 +123,14 @@ public class MainActivity extends AppCompatActivity {
      * @param priceOfOrder
      * @return text summary
      */
-    private String createOrderSummary(int priceOfOrder) {
+    private String createOrderSummary(int priceOfOrder, boolean topping_WC, boolean topping_choc) {
 
         String orderName = "Name: " + customerName;
-        String orderQuantity = "\n \n Quantity " + quantity;
-        String orderTotal = "\n \n Total: $" + priceOfOrder;
-        String orderSummary = orderName + orderQuantity + orderTotal + "\n \n Thank you!";
+        String orderToppings = "\n \nWhipped Cream: " + topping_WC;
+        String orderToppings2 = "\n \nChocolate: " + topping_choc;
+        String orderQuantity = "\n \nQuantity: " + quantity;
+        String orderTotal = "\n \nTotal: $" + priceOfOrder;
+        String orderSummary = orderName + orderToppings + orderToppings2 + orderQuantity + orderTotal + "\n \n Thank you!";
 
         return orderSummary;
     }

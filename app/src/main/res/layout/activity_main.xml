@@ -38,26 +38,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/toppings"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:layout_marginBottom="16dp" />
 
             <CheckBox
                 android:id="@+id/checkbox_toppings1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/whippedCream" />
+                android:text="@string/whippedCream"
+                android:paddingLeft="24dp"
+                android:textSize="16sp" />
 
             <CheckBox
                 android:id="@+id/checkbox_toppings2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chocolate" />
+                android:text="@string/chocolate"
+                android:paddingLeft="24dp"
+                android:textSize="16sp"
+                android:onClick="submitOrder" />
 
             <TextView
                 android:id="@+id/quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/word_quantity"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:layout_marginTop="16dp" />
 
             <LinearLayout
                 android:id="@+id/row_buttons"
